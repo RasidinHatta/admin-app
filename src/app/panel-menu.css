@@ -1,0 +1,8 @@
+.surface-ground{
+    background-color: transparent !important;
+    overflow: hidden;
+}
+
+.sidebar-bg{
+    background-color: --var-background !important;
+}
