@@ -7,7 +7,7 @@ import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
 import * as dat from 'lil-gui';
 import Stats from 'stats.js';
 
-const ThreeScene: React.FC = () => {
+const ThreeBasic: React.FC = () => {
   const containerRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
@@ -151,4 +151,4 @@ const ThreeScene: React.FC = () => {
   );
 };
 
-export default ThreeScene;
+export default ThreeBasic;

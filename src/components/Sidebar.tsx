@@ -32,14 +32,14 @@ const Sidebar = () => {
             icon: 'pi pi-cog',
             items: [
                 {
-                    label: 'Project1',
+                    label: 'Basic',
                     icon: 'pi pi-briefcase',
-                    command: () => window.location.href = '/project1',
+                    command: () => window.location.href = '/Three/basic',
                 },
                 {
-                    label: 'Project2',
+                    label: 'Animation',
                     icon: 'pi pi-briefcase',
-                    command: () => window.location.href = '/project2',
+                    command: () => window.location.href = '/Three/animation',
                 },
             ]
         },        
