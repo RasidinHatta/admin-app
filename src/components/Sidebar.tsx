@@ -28,6 +28,17 @@ const Sidebar = () => {
             ],
         },
         {
+            label: 'ThreeJS',
+            icon: 'pi pi-cog',
+            items: [
+                {
+                    label: 'Project1',
+                    icon: 'pi pi-briefcase',
+                    command: () => window.location.href = '/project1',
+                }
+            ]
+        },        
+        {
             label: 'Reports',
             icon: 'pi pi-chart-bar',
             items: [

@@ -10,18 +10,23 @@
   },
   "dependencies": {
     "@clerk/nextjs": "^6.0.0",
+    "lil-gui": "^0.19.2",
     "next": "14.2.16",
     "primeflex": "^3.3.1",
     "primeicons": "^7.0.0",
     "primereact": "^10.8.4",
     "react": "^18",
     "react-dom": "^18",
-    "sass": "^1.80.4"
+    "sass": "^1.80.4",
+    "stats.js": "^0.17.0",
+    "three": "^0.169.0"
   },
   "devDependencies": {
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
+    "@types/stats.js": "^0.17.3",
+    "@types/three": "^0.169.0",
     "eslint": "^8",
     "eslint-config-next": "14.2.16",
     "postcss": "^8",
