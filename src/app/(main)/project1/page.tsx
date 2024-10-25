@@ -2,7 +2,7 @@
 import { Card } from 'primereact/card';
 import { auth } from "@clerk/nextjs/server";
 import React from 'react';
-import ThreeScene from '@/components/ThreeScene';
+import ThreeScene from '@/components/three/ThreeScene';
 
 async function Project1() {
     const { userId } = await auth();
