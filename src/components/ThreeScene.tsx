@@ -85,7 +85,6 @@ const ThreeScene = () => {
         gui.add(torus.position, 'y').min(-3).max(3).step(0.01).name('elevation');
         gui.add(torus, 'visible');
         gui.addColor(torus.material, 'color');
-        gui.add({ write: () => alert('ok') }, 'write');
 
         const animate = () => {
             requestAnimationFrame(animate);
