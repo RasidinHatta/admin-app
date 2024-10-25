@@ -1,13 +1,7 @@
-import { auth, currentUser } from "@clerk/nextjs/server";
+import { currentUser } from "@clerk/nextjs/server";
 import { Card } from 'primereact/card'; // Import Card from PrimeReact
 
 async function DashboardPage() {
-    const { userId } = await auth();
-
-    if (!userId) {
-        return <div>You are not logged in</div>;
-    }
-
     const user = await currentUser();
 
     return (

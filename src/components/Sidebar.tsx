@@ -35,7 +35,12 @@ const Sidebar = () => {
                     label: 'Project1',
                     icon: 'pi pi-briefcase',
                     command: () => window.location.href = '/project1',
-                }
+                },
+                {
+                    label: 'Project2',
+                    icon: 'pi pi-briefcase',
+                    command: () => window.location.href = '/project2',
+                },
             ]
         },        
         {
