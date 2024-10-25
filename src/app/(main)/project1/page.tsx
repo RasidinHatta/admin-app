@@ -4,7 +4,7 @@ import { auth } from "@clerk/nextjs/server";
 import React from 'react';
 import ThreeScene from '@/components/three/ThreeScene';
 
-async function Project1() {
+async function Page() {
     const { userId } = await auth();
 
     if (!userId) {
@@ -12,12 +12,12 @@ async function Project1() {
     }
 
     return (
-        <div className="container mx-auto p-4">
-            <Card title="Welcome to Project1" className="mb-4" style={{ width: '100%', height: '500px' }}> {/* Set a height for the Card */}
+        <div className="container mx-auto p-4" style={{ height: '100vh' }}> {/* Full viewport height */}
+            <Card title="Welcome to Project1" className="h-full w-full mb-4"> {/* Full height and width */}
                 <ThreeScene />
             </Card>
         </div>
     );
 }
 
-export default Project1;
+export default Page;
