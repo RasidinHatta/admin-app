@@ -64,6 +64,10 @@ const Sidebar = () => {
             icon: 'pi pi-user',
             items: [
                 {
+                    label: 'View Users',
+                    icon: 'pi pi-users',
+                },
+                {
                     label: 'Manage Users',
                     icon: 'pi pi-users',
                     items: [{ label: 'Add User' }, { label: 'Remove User' }]

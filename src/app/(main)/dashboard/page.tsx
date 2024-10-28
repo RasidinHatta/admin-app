@@ -3,7 +3,6 @@ import { Card } from 'primereact/card'; // Import Card from PrimeReact
 
 async function DashboardPage() {
     const user = await currentUser();
-
     return (
         <div className="container mx-auto p-4">
             <Card title="Welcome to Your Dashboard" className="mb-4">
@@ -12,11 +11,7 @@ async function DashboardPage() {
             </Card>
 
             <Card title="Recent Activities" className="mb-4">
-                <ul>
-                    <li>Logged in on {new Date().toLocaleString()}</li>
-                    <li>Completed profile setup</li>
-                    <li>Updated settings</li>
-                </ul>
+                <div>Hello, {user?.firstName} welcome to Clerk</div>
             </Card>
         </div>
     );
