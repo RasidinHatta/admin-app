@@ -38,7 +38,6 @@ const ThreeAnimation: React.FC = () => {
         }
 
         const scene = new THREE.Scene();
-        scene.background = new THREE.Color('#444444');
         scene.fog = new THREE.Fog(0x3f7b9d, 0, 750);
 
         const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 1, 1000);
@@ -52,120 +51,92 @@ const ThreeAnimation: React.FC = () => {
         const ambientLight = new THREE.AmbientLight(0x404040);
         scene.add(ambientLight);
 
-        const directionalLight = new THREE.DirectionalLight(0xff9933, 0.5);
+        const directionalLight = new THREE.DirectionalLight(0xffffff, 0.5);
         directionalLight.position.set(5, 5, 5);
         directionalLight.castShadow = true;
         scene.add(directionalLight);
 
-        // Create different materials for each axis
-        const xAxisMaterial = new THREE.LineBasicMaterial({ color: 0xff0000 }); // Red for X-axis
-        const yAxisMaterial = new THREE.LineBasicMaterial({ color: 0x00ff00 }); // Green for Y-axis
-        const zAxisMaterial = new THREE.LineBasicMaterial({ color: 0x0000ff }); // Blue for Z-axis
+        const gridHelper = new THREE.GridHelper(100, 100);
+        scene.add(gridHelper);
 
-        // Create the X-axis
-        const axesGeometryX = new THREE.BufferGeometry();
-        axesGeometryX.setFromPoints([
-            new THREE.Vector3(-5, 0, 0),
-            new THREE.Vector3(5, 0, 0), // X-axis
-        ]);
-        const xAxisLine = new THREE.Line(axesGeometryX, xAxisMaterial);
-        scene.add(xAxisLine);
-
-        // Create the Y-axis
-        const axesGeometryY = new THREE.BufferGeometry();
-        axesGeometryY.setFromPoints([
-            new THREE.Vector3(0, -5, 0),
-            new THREE.Vector3(0, 5, 0), // Y-axis
-        ]);
-        const yAxisLine = new THREE.Line(axesGeometryY, yAxisMaterial);
-        scene.add(yAxisLine);
-
-        // Create the Z-axis
-        const axesGeometryZ = new THREE.BufferGeometry();
-        axesGeometryZ.setFromPoints([
-            new THREE.Vector3(0, 0, -5),
-            new THREE.Vector3(0, 0, 5), // Z-axis
-        ]);
-        const zAxisLine = new THREE.Line(axesGeometryZ, zAxisMaterial);
-        scene.add(zAxisLine);
-
-
-        const floorGeometry = new THREE.PlaneGeometry(10, 10);
-        const floorMaterial = new THREE.MeshStandardMaterial({
-            color: '#777777',
-            metalness: 0.6,
-            roughness: 0.2,
-            envMapIntensity: 0.5,
-            side: THREE.DoubleSide,
-        });
-        const floor = new THREE.Mesh(floorGeometry, floorMaterial);
-        floor.receiveShadow = true;
-        floor.rotation.x = -Math.PI * 0.5;
-        scene.add(floor);
-
-        // const torusGeometry = new THREE.TorusGeometry(1, 0.4, 32, 64);
-        // const material = new THREE.MeshBasicMaterial({ color: '#3b4dad' });
-        // const torus = new THREE.Mesh(torusGeometry, material);
-        // torus.position.set(0, 2, 0);
-        // scene.add(torus);
-
-        const torusKnotGeometry = new THREE.TorusKnotGeometry(1, 0.4, 200, 20, 2, 3);
-        const material = new THREE.MeshStandardMaterial({
-            color: '#049ef4', // This should be a blue color
-            emissive: '#000000',
+        const torusGeometry1 = new THREE.TorusGeometry(5, 1, 16, 100);
+        const torusGeometry2 = new THREE.TorusGeometry(3, 0.6, 16, 100);
+        const torusGeometry3 = new THREE.TorusGeometry(2, 0.4, 16, 100);
+        const material1 = new THREE.MeshStandardMaterial({
+            color: '#049ef4',
             roughness: 0,
-            wireframe: true,
             metalness: 0.4,
-            vertexColors: false,
-            flatShading: false,
-            fog: true,
-            depthTest: true,
-            depthWrite: true,
+            side: THREE.DoubleSide,
+        });
+        const material2 = new THREE.MeshStandardMaterial({
+            color: '#519e5e',
+            roughness: 0,
+            metalness: 0.4,
+            side: THREE.DoubleSide,
+        });
+        const material3 = new THREE.MeshStandardMaterial({
+            color: '#d03906',
+            roughness: 0,
+            metalness: 0.4,
             side: THREE.DoubleSide,
         });
 
+        // Create torus1 (horizontal)
+        const torus1 = new THREE.Mesh(torusGeometry1, material1);
+        torus1.position.set(0, 0, 0);
+        scene.add(torus1);
 
-        const torusKnot = new THREE.Mesh(torusKnotGeometry, material);
-        torusKnot.position.set(0, 2, 0);
-        scene.add(torusKnot);
+        // Create torus2 (vertical)
+        const torus2 = new THREE.Mesh(torusGeometry2, material2);
+        torus2.position.set(0, 0, 0);
+        torus2.rotation.x = Math.PI / 2; // Rotate to make it vertical
+        scene.add(torus2);
 
-        // Add the Positions folder
+        const torus3 = new THREE.Mesh(torusGeometry3, material3);
+        torus3.position.set(0, 0, 0);
+        torus3.rotation.z = Math.PI / 2; // Rotate to make it vertical
+        scene.add(torus3);
+
+        // Add controls to GUI
         const positionFolder = gui.addFolder('Positions');
-        positionFolder.add(torusKnot.position, 'x').min(-3).max(3).step(0.01).name('position-x');
-        positionFolder.add(torusKnot.position, 'y').min(-3).max(3).step(0.01).name('position-y');
-        positionFolder.add(torusKnot.position, 'z').min(-3).max(3).step(0.01).name('position-z');
+        positionFolder.add(torus1.position, 'x').min(-3).max(3).step(0.01).name('torus1-position-x');
+        positionFolder.add(torus2.position, 'y').min(-3).max(3).step(0.01).name('torus2-position-y');
         positionFolder.close();
 
-        // Add the Appearance folder
         const appearanceFolder = gui.addFolder('Appearance');
-        appearanceFolder.add(torusKnot, 'visible');
-        appearanceFolder.addColor(torusKnot.material, 'color');
+        appearanceFolder.add(torus1, 'visible').name('torus1 visible');
+        appearanceFolder.add(torus2, 'visible').name('torus2 visible');
+        appearanceFolder.addColor(torus1.material, 'color').name('color1');
+        appearanceFolder.addColor(torus2.material, 'color').name('color2');
+        appearanceFolder.addColor(torus3.material, 'color').name('color3');
         appearanceFolder.close();
 
-        // Add the Rotation folder
         const rotationFolder = gui.addFolder('Rotation');
-        rotationFolder.add(torusKnot.rotation, 'x').min(0).max(Math.PI * 2).step(0.01).name('rotation-x');
-        rotationFolder.add(torusKnot.rotation, 'y').min(0).max(Math.PI * 2).step(0.01).name('rotation-y');
-        rotationFolder.add(torusKnot.rotation, 'z').min(0).max(Math.PI * 2).step(0.01).name('rotation-z');
-
-        // Add Rotation Speed
         rotationFolder.add({ speed: rotationSpeed }, 'speed', 0, 0.1).onChange((value: number) => {
             setRotationSpeed(value);
         }).name('rotation speed');
-
-        // Add Start/Stop Control
         rotationFolder.add({ startStop: isRotating }, 'startStop').name('Toggle Rotation').onChange((value: boolean) => {
             setIsRotating(value);
         });
+
+        // Stars background
+        const addStar = () => {
+            const starGeometry = new THREE.SphereGeometry(0.25, 24, 24);
+            const starMaterial = new THREE.MeshBasicMaterial({ color: 0xffffff });
+            const star = new THREE.Mesh(starGeometry, starMaterial);
+            const [x, y, z] = Array(3).fill(1).map(() => THREE.MathUtils.randFloatSpread(100));
+            star.position.set(x, y, z);
+            scene.add(star);
+        };
+        Array(200).fill(3).forEach(addStar);
 
         const animate = () => {
             requestAnimationFrame(animate);
 
             if (isRotating) {
-                // Update torus rotation for animation based on speed
-                torusKnot.rotation.x += rotationSpeed;
-                torusKnot.rotation.y += rotationSpeed;
-                torusKnot.rotation.z += rotationSpeed;
+                torus1.rotation.x += rotationSpeed;
+                torus2.rotation.y += rotationSpeed;
+                torus3.rotation.x += rotationSpeed;
             }
 
             renderer.render(scene, camera);
