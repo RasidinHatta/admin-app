@@ -44,6 +44,22 @@ const Sidebar = () => {
             ]
         },        
         {
+            label: 'Spline',
+            icon: 'pi pi-cog',
+            items: [
+                {
+                    label: 'Cube Binary',
+                    icon: 'pi pi-briefcase',
+                    command: () => window.location.href = '/spline/cube-binary',
+                },
+                {
+                    label: 'Vespa',
+                    icon: 'pi pi-briefcase',
+                    command: () => window.location.href = '/spline/vespa',
+                },
+            ]
+        },        
+        {
             label: 'Reports',
             icon: 'pi pi-chart-bar',
             items: [
