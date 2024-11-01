@@ -1,13 +1,19 @@
 import Header from "@/components/Header";
+import Spline from "@splinetool/react-spline";
 
 
 export default function Home() {
   return (
-    <div>
+    <div className="absolute top-0 w-full h-full overflow-hidden">
       <Header />
-      <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 ">
-        <h5 className="font-bold mt-10">Home Page</h5>
-      </div>
+      <Spline
+        scene="https://prod.spline.design/49emFDQBYgVsHDDp/scene.splinecode"
+        className="absolute top-0 left-0 w-full h-full border-none -z-10"
+      />
+      <Spline
+        scene="https://prod.spline.design/kDc8Kz5VaDMPBW2c/scene.splinecode"
+        className="absolute top-25 left-0 w-full h-full border-none"
+      />
     </div>
   );
 }
