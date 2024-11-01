@@ -10,6 +10,7 @@ import 'primeicons/primeicons.css';
 import '../../styles/layout/layout.scss';
 import '../../styles/demo/Demos.scss';
 import './globals.css';
+import Spline from '@splinetool/react-spline';
 
 export default function RootLayout({
   children,
@@ -21,6 +22,10 @@ export default function RootLayout({
       <body>
         <PrimeReactProvider>
           <ClerkProvider>
+            <Spline
+              scene="https://prod.spline.design/xBvhYrO2Tn9uIiJH/scene.splinecode" 
+              className="absolute top-0 left-0 w-full h-full border-none -z-20"
+            />
             {children}
           </ClerkProvider>
         </PrimeReactProvider>
