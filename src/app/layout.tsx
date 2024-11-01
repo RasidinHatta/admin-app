@@ -11,6 +11,12 @@ import 'primeicons/primeicons.css';
 import '../../styles/layout/layout.scss';
 import '../../styles/demo/Demos.scss';
 import './globals.css';
+import { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: "Admin App",
+  description: "Admin App desciption",
+};
 
 export default function RootLayout({
   children,
