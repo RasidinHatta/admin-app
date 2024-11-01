@@ -1,4 +1,3 @@
-import { UserDetails } from "@/components/user-details";
 import { currentUser } from "@clerk/nextjs/server";
 import { Card } from 'primereact/card'; // Import Card from PrimeReact
 
@@ -13,10 +12,6 @@ async function DashboardPage() {
 
             <Card title="Recent Activities" className="mb-4">
                 <div>Hello, {user?.firstName} welcome to Clerk</div>
-            </Card>
-
-            <Card title="User Details">
-                <UserDetails/>
             </Card>
         </div>
     );
