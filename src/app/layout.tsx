@@ -23,10 +23,12 @@ export default function RootLayout({
         <PrimeReactProvider>
           <ClerkProvider>
             <Spline
-              scene="https://prod.spline.design/xBvhYrO2Tn9uIiJH/scene.splinecode" 
+              scene="https://prod.spline.design/xBvhYrO2Tn9uIiJH/scene.splinecode"
               className="absolute top-0 left-0 w-full h-full border-none -z-20"
             />
-            {children}
+            <div>
+              {children}
+            </div>
           </ClerkProvider>
         </PrimeReactProvider>
       </body>
