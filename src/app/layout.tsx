@@ -2,6 +2,7 @@ import {
   ClerkProvider,
 } from '@clerk/nextjs'
 import { PrimeReactProvider } from 'primereact/api';
+import { SpeedInsights } from '@vercel/speed-insights/next';
 import '../../public/themes/lara-dark-indigo/theme.css';
 import 'primereact/resources/themes/lara-dark-indigo/theme.css';
 import 'primereact/resources/primereact.css';
@@ -22,6 +23,7 @@ export default function RootLayout({
         <PrimeReactProvider>
           <ClerkProvider>
             {children}
+            <SpeedInsights />
           </ClerkProvider>
         </PrimeReactProvider>
       </body>
