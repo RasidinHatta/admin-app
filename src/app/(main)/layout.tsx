@@ -11,11 +11,9 @@ export default async function MainLayout({
         return <div>You are not logged in</div>;
     }
     return (
-        <html lang='en'>
-            <body>
-                <Sidebar />
-                {children}
-            </body>
-        </html>
+        <div>
+            <Sidebar />
+            {children}
+        </div>
     )
 }

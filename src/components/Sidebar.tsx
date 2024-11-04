@@ -100,7 +100,6 @@ const Sidebar = () => {
             icon: 'pi pi-cog',
             items: [
                 { label: 'General Settings', icon: 'pi pi-sliders-h' },
-                { label: 'Account Settings', icon: 'pi pi-user-edit' },
                 { label: 'API Settings', icon: 'pi pi-key' }
             ]
         },

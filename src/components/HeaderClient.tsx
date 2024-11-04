@@ -5,6 +5,14 @@ import { MegaMenu } from 'primereact/megamenu';
 import { UserButton } from '@clerk/nextjs';
 import { Button } from 'primereact/button';
 
+const DotIcon = () => {
+    return (
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="currentColor">
+        <path d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512z" />
+      </svg>
+    )
+  }
+
 const HeaderClient = ({ userId }: { userId: string | null }) => {
     // Define the menu items based on user authentication status
     const items = [
@@ -24,7 +32,15 @@ const HeaderClient = ({ userId }: { userId: string | null }) => {
 
     // If user is logged in, show UserButton; otherwise, show Sign Up / Sign In
     const end = userId ? (
-        <UserButton />
+        <UserButton>
+            <UserButton.MenuItems>
+                <UserButton.Action
+                    label="Open chat"
+                    labelIcon={<DotIcon />}
+                    onClick={() => alert('init chat')}
+                />
+            </UserButton.MenuItems>
+        </UserButton>
     ) : (
         <div className="flex gap-2">
             <Button
